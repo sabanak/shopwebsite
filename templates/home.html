@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<title>Online Shopping Center</title>
+<div style="display: flex; justify-content: flex-end">
+    <a class="btn btn-warning" href="{% url 'myapp:add_product' %}">ADD PRODUCTS</a>
+</div>
+<div class="container">
+  <div class="row">
+{% for product in products %}
+    <div class="col-md-4">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{product.img.url}}" alt="Card image cap" style="height:150px;width:285px;">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{product.desc}}</p>
+    <a href="{% url 'myapp:detail' product.id %}" class="btn btn-primary">Go Detail</a>
+  </div>
+</div>
+      </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
